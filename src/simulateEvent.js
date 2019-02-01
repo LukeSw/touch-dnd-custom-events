@@ -8,8 +8,8 @@ const allowedEvents = {
   'touchdrop': null
 };
 
-function ensureParamsCorrect (type, touchEvent, dataTransfer, target) {
-  if (!type || !touchEvent || !dataTransfer || !target) {
+function ensureParamsCorrect (type, touchEvent, dataTransfer) {
+  if (!type || !touchEvent || !dataTransfer) {
     throw new Error("simulateEvent: arguments can't be undefined");
   }
 
@@ -19,7 +19,10 @@ function ensureParamsCorrect (type, touchEvent, dataTransfer, target) {
 }
 
 export default function simulateEvent(type, touchEvent, dataTransfer, target) {
-  ensureParamsCorrect(type, touchEvent, dataTransfer, target);
+  if (!target) {
+    return;
+  }
+  ensureParamsCorrect(type, touchEvent, dataTransfer);
 
   const touchDetails = touchEvent.changedTouches[0];
   const event = new Event(type, {'bubbles': true});
