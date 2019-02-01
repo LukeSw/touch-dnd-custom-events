@@ -100,7 +100,7 @@ function handleTouchEnd (event) {
     simulateEvent('touchdrop', event, dataTransfer, target);
 
     touchDndCustomEvents.store.mode = 'protected';
-    simulateEvent('touchdragend', event, dataTransfer, target);
+    simulateEvent('touchdragend', event, dataTransfer, touchDndCustomEvents.draggedItem);
 
     touchDndCustomEvents.store = null;
     touchDndCustomEvents.dataTransfer = null;
