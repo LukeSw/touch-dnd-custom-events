@@ -14,7 +14,7 @@ const touchDndCustomEvents = {
 
 function handleTouchStart (event) {
   const target = event.target;
-  if (target.hasAttribute("draggable")) {
+  if (target.getAttribute("draggable") === 'true') {
     event.preventDefault();
 
     const x = event.changedTouches[0].clientX;
